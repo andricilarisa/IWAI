@@ -13,12 +13,15 @@ body {
   display: block;
 }
 .sub-menu {
-  padding: 20px 10px 20px 60px;
   text-decoration: none;
   font-size: 25px;
   color: #fff;
   display: block;
   transition: 0.3s;
+  padding-top: 20px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  padding-left: 25%;
   border-bottom: 1px solid #C1C8C0;
 }
 .side-bar a:hover {
@@ -26,7 +29,7 @@ body {
 }
 .image-place{
   border-bottom: 1px solid #C1C8C0;
-  padding-left: 50px;
+  padding-left: 25%;
   background-color: #fff;
 }
 .choose-game {
