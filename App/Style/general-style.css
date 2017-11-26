@@ -1,29 +1,86 @@
 body {
-    font-family: "Lato", sans-serif;
+  font-family: "Lato", sans-serif;
 }
-.sidenav {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(18,125,120, 0.9);
-    border-right: 1px solid #C1C8C0;
+.side-bar {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(18,125,120, 0.9);
+  border-right: 1px solid #C1C8C0;
+  display: block;
 }
 .sub-menu {
-    padding: 20px 10px 20px 60px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #fff;
-    display: block;
-    transition: 0.3s;
-    border-bottom: 1px solid #C1C8C0;
+  padding: 20px 10px 20px 60px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+  border-bottom: 1px solid #C1C8C0;
 }
-.sidenav a:hover {
-    color: #C1C8C0;
+.side-bar a:hover {
+  color: #C1C8C0;
 }
 .image-place{
   border-bottom: 1px solid #C1C8C0;
   padding-left: 50px;
   background-color: #fff;
+}
+.choose-game {
+  border-radius: 4px;
+  background-color: #163333;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 320px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.choose-game:hover{
+  background-color: #127D78;
+}
+.choose-game span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.choose-game span:after {
+  font-size: 30px;
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.choose-game:hover span {
+  padding-right: 25px;
+}
+
+.choose-game:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.right-side{
+  width: 80%;
+  height: 100%;
+  float: right;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(193, 200, 192, 0.3);
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 9%;
 }
