@@ -1,0 +1,163 @@
+body{
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+.container{
+	overflow-x: hidden;
+	position: relative;
+	width: 100%;
+	overflow-y: auto;
+}
+
+.line{
+	background-color: #127D78;
+	width: 100%;
+	height: 7px;
+}
+
+.sidenav{
+	position: absolute;
+	position: fixed;
+	overflow: hidden;
+}
+
+.image1{
+	width: 100%; 
+	height: 800px; 
+	float: right; 
+	position: absolute;
+}
+
+.image1:hover{
+	content: url("../../Resources/Images/home1.jpg");
+	width: 100%;
+	height: 800px;
+	float: right;
+	transition: opacity 300ms ease-in-out 2s;
+	margin-bottom: 0;
+	position: absolute;
+}
+
+.triangle{
+	width: 0;
+    height: 0;
+    border-left: 300px solid transparent;
+    border-right: 200px solid transparent;
+    border-bottom: 170px solid white;
+    position: absolute;
+    margin-left: 80%;
+    margin-top: 630px;
+
+}
+
+#text{
+	position: absolute;
+	color: #127D78;
+	font-size: 20pt;
+	margin-left: 60%;
+	margin-top: 10%;
+	background-color: #ffffff;
+	padding: 2px;
+	border-radius: 2px;
+}
+
+#text1{
+	margin-left: 65%;
+	margin-top: 15%;
+	position: absolute;
+	color: #127D78;
+	font-size: 20pt;
+	background-color: #ffffff;
+	padding: 2px;
+	border-radius: 2px;
+}
+
+.second-part{
+	margin-left: 30%;
+	margin-right: 15%;
+	margin-top: 800px;
+	position: absolute;
+
+}
+
+.game-details{
+	margin-top: 50px;
+}
+
+.title{
+	text-align: center;
+	font-size: 30pt;
+	color: #127D78;
+}
+
+.vl {
+    border-left: 3px solid #127D78;
+    height: 350px;
+    display: inline-block;
+}
+
+.part1{
+	width: 45%;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.part2{
+	width: 45%;
+	margin-left: 25px;
+	display: inline-block;
+}
+
+.btn{
+	position: absolute;
+	background-color: #127D78;
+	border-radius: 3px;
+	font-size: 20pt;
+	box-shadow: 2px;
+	margin-top: 550px;
+}
+
+.btn1{
+	margin-left: 35%;
+}
+
+.btn2{
+	margin-left: 45%;
+	margin-right: 15px;
+}
+
+span img{
+	position: absolute;
+	z-index: 1;
+}
+
+.sp{
+	margin-left: -250px;
+}
+
+.qm{
+	position: absolute;
+	margin-left: 200px;
+}
+
+@media (max-height: 1400px){
+	.image1{
+		height: 640px;
+		margin-left: 5%;
+	}
+
+	.image1:hover{
+		height: 640px;
+	}
+
+	.triangle{
+		margin-left: 77%;
+		margin-top: 500px;
+	}
+
+	.second-part{
+		margin-top: 620px;
+
+	}
+}
