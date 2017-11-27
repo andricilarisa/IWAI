@@ -50,6 +50,7 @@ footer {
   border-right: 1px solid #C1C8C0;
   display: block;
 }
+
 .sub-menu {
   text-decoration: none;
   font-size: 25px;
@@ -62,14 +63,17 @@ footer {
   padding-left: 25%;
   border-bottom: 1px solid #C1C8C0;
 }
+
 .side-bar a:hover {
   color: #C1C8C0;
 }
+
 .image-place{
   border-bottom: 1px solid #C1C8C0;
   padding-left: 25%;
   background-color: #fff;
 }
+
 .choose-game {
   border-radius: 4px;
   background-color: #163333;
@@ -153,6 +157,7 @@ footer {
   transform:translate(0%,-50%);
   -ms-transform:translate(-0%,-50%)
 }
+
 .right-orientation{
   position:absolute;
   top:50%;
@@ -160,10 +165,12 @@ footer {
   transform:translate(0%,-50%);
   -ms-transform:translate(0%,-50%)
 }
+
 .game-image{
   width: 65%;
   height: 65%;
 }
+
 .full-screen{
   color: white;
   font-size: 20px;
@@ -217,7 +224,6 @@ footer {
     max-width: 800px;
 }
 
-/* The Close Button */
 .close {
     position: absolute;
     top: 15px;
