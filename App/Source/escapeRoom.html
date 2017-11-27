@@ -3,21 +3,45 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../Style/general-style.css">
   <script>
-  var slideIndex = 1;
-  showDivs(slideIndex);
-  function plusDivs(n) {
-    showDivs(slideIndex += n);
+  var index = 1;
+  showImage(index);
+  function nextOne(n) {
+    showImage(index += n);
   }
-  function showDivs(n) {
+  function showImage(n) {
     var i;
     var x = document.getElementsByClassName("theGame");
-    if (n > x.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = x.length}
+    if (n > x.length) {index = 1}
+    if (n < 1) {index = x.length}
     for (i = 0; i < x.length; i++) {
       x[i].style.display = "none";
     }
-    x[slideIndex-1].style.display = "block";
+    x[index-1].style.display = "block";
   }
+
+function fullScreenFirstGame(){
+  var modal = document.getElementById('fullScreenModal');
+  var img = document.getElementById("image1");
+  var modalImg = document.getElementById("emptyImg");
+  modal.style.display = "block";
+  modalImg.src = img.src;
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+}
+
+function fullScreenSecondGame(){
+  var modal = document.getElementById('fullScreenModal');
+  var img = document.getElementById("image2");
+  var modalImg = document.getElementById("emptyImg");
+  modal.style.display = "block";
+  modalImg.src = img.src;
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+}
   </script>
 </head>
 <body>
@@ -31,26 +55,42 @@
       <a class="sub-menu" href="#">Exploreaz&#259;</a>
     </div>
     <div class="right-side" style="text-align: center; color: #127D78">
-      <h1>Nu te speria, trebuie doar sa gasesti iesirea</h1>
-      <div class="w3-content w3-display-container">
+      <h2>Nu-i panica, trebuie doar sa gasesti iesirea</h2>
+      <div>
         <div class="game theGame">
-          <img class="game-image" src="../Resources/Images/jackpot.jpg">
+          <div class="container">
+            <img id="image1" class="game-image" src="../Resources/Images/jackpot.jpg">
+            <div class="overlay">
+              <a id="firstImage" onclick="fullScreenFirstGame()" class="full-screen">FULL SCREEN</a>
+            </div>
+          </div>
         </div>
         <div class="game theGame" style="display: none">
-          <img class="game-image" src="../Resources/Images/fotbal.jpg">
+          <div class="container">
+            <img id="image2" class="game-image" src="../Resources/Images/fotbal.jpg">
+            <div class="overlay">
+              <a id="secondImage" onclick="fullScreenSecondGame()" class="full-screen">FULL SCREEN</a>
+            </div>
+          </div>
         </div>
-        <button class="slider-button left-orientation" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="slider-button right-orientation" onclick="plusDivs(1)">&#10095;</button>
+        <button class="slider-button left-orientation" onclick="nextOne(-1)">&#10094;</button>
+        <button class="slider-button right-orientation" onclick="nextOne(1)">&#10095;</button>
       </div>
     </div>
   </div>
+  <!-- Modal micut pentru full screen game -->
+  <div id="fullScreenModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="emptyImg">
+  </div>
+
   <!-- <footer>
-    <div class="copyright">
-      <p>&copy 2017 - NumeFainDeEchipa</p>
-    </div>
-    <div class="link">
-      <a href="../Source/contact.html">Contact Us</a>
-    </div>
-  </footer> -->
+  <div class="copyright">
+  <p>&copy 2017 - NumeFainDeEchipa</p>
+</div>
+<div class="link">
+<a href="../Source/contact.html">Contact Us</a>
+</div>
+</footer> -->
 </body>
 </html>
