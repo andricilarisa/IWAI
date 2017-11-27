@@ -1,6 +1,44 @@
 body {
   font-family: "Lato", sans-serif;
 }
+footer {
+  float: bottom;
+  width: 80%;
+  display: inline-block;
+  margin: 2em 0;
+  height: 70px;
+  background-color: rgba(18,125,120, 0.9);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.copyright {
+  width: 50%;
+   float: left;
+   align-content: center;
+   text-align: center;
+}
+.link {
+  width: 50%;
+  float: right;
+  align-items: center;
+  position: relative;
+  top: 50%;
+}
+.link a {
+  line-height: 70px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-bottom: -50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
 .side-bar {
   height: 100%;
   width: 20%;
