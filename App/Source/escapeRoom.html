@@ -2,6 +2,23 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="../Style/general-style.css">
+  <script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("theGame");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    x[slideIndex-1].style.display = "block";
+  }
+  </script>
 </head>
 <body>
   <div class="row" style="width: 100%">
@@ -14,16 +31,26 @@
       <a class="sub-menu" href="#">Exploreaz&#259;</a>
     </div>
     <div class="right-side" style="text-align: center; color: #127D78">
-        <h1>Nu te speria, trebuie doar sa gasesti iesirea</h1>
+      <h1>Nu te speria, trebuie doar sa gasesti iesirea</h1>
+      <div class="w3-content w3-display-container">
+        <div class="game theGame">
+          <img class="game-image" src="../Resources/Images/jackpot.jpg">
+        </div>
+        <div class="game theGame" style="display: none">
+          <img class="game-image" src="../Resources/Images/fotbal.jpg">
+        </div>
+        <button class="slider-button left-orientation" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="slider-button right-orientation" onclick="plusDivs(1)">&#10095;</button>
+      </div>
     </div>
   </div>
-  <footer>
+  <!-- <footer>
     <div class="copyright">
       <p>&copy 2017 - NumeFainDeEchipa</p>
     </div>
     <div class="link">
       <a href="../Source/contact.html">Contact Us</a>
     </div>
-  </footer>
+  </footer> -->
 </body>
 </html>

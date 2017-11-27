@@ -14,9 +14,9 @@ footer {
 }
 .copyright {
   width: 50%;
-   float: left;
-   align-content: center;
-   text-align: center;
+  float: left;
+  align-content: center;
+  text-align: center;
 }
 .link {
   width: 50%;
@@ -113,7 +113,7 @@ footer {
 }
 
 .right-side{
-  width: 80%;
+  width: 83%;
   height: 100%;
   float: right;
   top: 0;
@@ -123,4 +123,43 @@ footer {
   position: fixed;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.game{
+  position: relative;
+}
+
+.slider-button{
+  border:none;
+  display:inline-block;
+  outline:0;
+  padding:8px 16px;
+  vertical-align:middle;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  background-color:inherit;
+  text-align:center;
+  cursor:pointer;
+  white-space:nowrap;
+  font-size: 30px;
+}
+
+.left-orientation{
+  position:absolute;
+  top:50%;
+  left:5%;
+  transform:translate(0%,-50%);
+  -ms-transform:translate(-0%,-50%)
+}
+.right-orientation{
+  position:absolute;
+  top:50%;
+  right:5%;
+  transform:translate(0%,-50%);
+  -ms-transform:translate(0%,-50%)
+}
+.game-image{
+  width: 65%;
+  height: 65%;
 }
