@@ -70,6 +70,19 @@ footer .line {
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
+.echipa-mare{
+  left:30%;
+}
+.echipa{
+  position: relative;
+  display: inline-block;
+}
+.echipa image{
+  float: left;
+}
+.echipa p{
+  float:left;
+}
 .side-bar {
   height: 100%;
   width: 17%;
