@@ -1,26 +1,37 @@
 body {
   font-family: "Lato", sans-serif;
 }
+.footer-container{
+  position: relative;
+}
 footer {
-  float: bottom;
-  width: 80%;
+  width: 100%;
   display: inline-block;
-  margin: 2em 0;
+  margin: 30px;
   height: 70px;
-  background-color: rgba(18,125,120, 0.9);
   position: absolute;
+  top: 100%;
   bottom: 0;
   right: 0;
 }
+footer .line {
+    border-left: 3px solid #127D78;
+    height: 70px;
+    width: 0.2%;
+    float: left;
+    position: relative;
+}
 .copyright {
-  width: 50%;
-  float: left;
-  align-content: center;
-  text-align: center;
+  width: 24%;
+   float: left;
+   align-content: center;
+   text-align: center;
+   top: 15%;
+   position: relative;
 }
 .link {
-  width: 50%;
-  float: right;
+  width:24%;
+  float: left;
   align-items: center;
   position: relative;
   top: 50%;
@@ -28,7 +39,7 @@ footer {
 .link a {
   line-height: 70px;
   text-decoration: none;
-  color: white;
+  color: black;
   text-align: center;
   font-weight: bold;
   position: absolute;
@@ -38,7 +49,27 @@ footer {
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
-
+.social {
+  width:49%;
+  float: left;
+  align-items: center;
+  position: relative;
+  top: 15%;
+  left: 25%;
+}
+.social a {
+  line-height: 70px;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-bottom: -50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
 .side-bar {
   height: 100%;
   width: 17%;
