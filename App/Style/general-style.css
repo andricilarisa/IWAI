@@ -1,64 +1,48 @@
 body {
   font-family: "Roboto", sans-serif;
 }
-.footer-container{
-  position: relative;
-}
 footer {
-  width: 100%;
+  padding: 10px;
+  width: 83%;
   display: inline-block;
-  margin: 30px;
-  height: 70px;
   position: absolute;
-  top: 100%;
   bottom: 0;
   right: 0;
+  border-top: 1px solid #C1C8C0;
 }
 footer .line {
-    border-left: 3px solid #127D78;
-    height: 70px;
-    width: 0.2%;
-    float: left;
-    position: relative;
+  border-left: 3px solid #127D78;
+  height: 70px;
+  width: 0.2%;
+  float: left;
+  position: relative;
 }
 .copyright {
   width: 24%;
-   float: left;
-   align-content: center;
-   text-align: center;
-   top: 15%;
-   position: relative;
+  float: left;
+  align-content: center;
+  text-align: center;
+  top: 15%;
+  position: relative;
 }
 
 .copyright p{
   color: #163333
 }
 
-.link {
-  width:24%;
-  float: left;
-  align-items: center;
-  position: relative;
-  top: 50%;
-}
 .link a {
-  line-height: 70px;
   text-decoration: none;
   color: #163333;;
-  text-align: center;
   font-weight: bold;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-bottom: -50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+  margin-top:16px;
 }
 
 .social-icons{
   width: 50px;
   height: 50px;
-  border-radius: 5px;
+  border-radius: 30px;
+  margin-right: 10px;
 }
 
 .social {
@@ -70,7 +54,6 @@ footer .line {
   left: 25%;
 }
 .social a {
-  line-height: 70px;
   text-decoration: none;
   color: black;
   text-align: center;
@@ -78,9 +61,6 @@ footer .line {
   position: relative;
   top: 50%;
   left: 50%;
-  margin-bottom: -50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
 }
 .echipa-mare{
   align-content: left;
