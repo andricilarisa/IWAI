@@ -63,7 +63,7 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 			</div>
-			<footer>
+			<footer style="position: relative;">
 				<div class="copyright">
 					<p>&copy 2017 - InterImage Team</p>
 				</div>
@@ -81,8 +81,9 @@
 </div>
 <script type="text/javascript">
 	var myHeight = Number(document.getElementById("imag").offsetHeight)+Number(document.getElementById("second-part").offsetHeight)+Number(document.getElementById("games-details").offsetHeight);
-	document.getElementById('container').style.height = myHeight + 'px';
-	console.log(myHeight);
+	var height = myHeight - 500;
+	document.getElementById('container').style.height = height + 'px';
+	console.log(height);
 </script>
 
 </body>
