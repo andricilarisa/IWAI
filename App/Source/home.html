@@ -93,10 +93,13 @@
 			</div>
 		</footer>
 	</div>
-	<script type="text/javascript">
-    var myHeight = Number(document.getElementById("imag").offsetHeight)+Number(document.getElementById("second-part").offsetHeight)+Number(document.getElementById("games-details").offsetHeight);
-    document.getElementById('container').style.height = myHeight + 'px';
-    console.log(myHeight);
-	</script>
+</div>
+<script type="text/javascript">
+	var myHeight = Number(document.getElementById("imag").offsetHeight)+Number(document.getElementById("second-part").offsetHeight)+Number(document.getElementById("games-details").offsetHeight);
+	var height = myHeight - 500;
+	document.getElementById('container').style.height = height + 'px';
+	console.log(height);
+</script>
+
 </body>
 </html>
