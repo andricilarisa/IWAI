@@ -78,7 +78,7 @@
 			</div>
 		</div>
 		</div>
-		<footer>
+		<footer id="footer" style="margin-top: 20px;">
 			<div class="copyright">
 			<p>&copy 2017 - InterImage Team</p>
 			</div>
@@ -95,8 +95,9 @@
 	</div>
 	<script type="text/javascript">
     var myHeight = Number(document.getElementById("imag").offsetHeight)+Number(document.getElementById("second-part").offsetHeight)+Number(document.getElementById("games-details").offsetHeight);
-    document.getElementById('container').style.height = myHeight + 'px';
-    console.log(myHeight);
+    var height = myHeight - 400;
+    document.getElementById('container').style.height = height + 'px';
+    console.log(Height);
 	</script>
 </body>
 </html>
