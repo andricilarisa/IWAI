@@ -2,15 +2,15 @@
             $('#slider img').hide();
             $('#slider img').first().show();
             $('a.prev, a.next').css('cursor', 'pointer');
-    
+
             var stor = 0;
             var maxstor = ($('#slider img').get().length - 1);
-            var lastShownStor = 0;     
+            var lastShownStor = 0;
             var popups = $('#slider img').get();
-            
+
             $('a.next, a.prev').bind('click', function(el) {
                 el.preventDefault();
-               
+
                 if($(this).hasClass('next')) {
                     if(stor < maxstor)
                         stor++;
@@ -32,6 +32,6 @@
                       else{
                           $(popup).css('display', 'block');
                       }
-                }               
-            });            
+                }
+            });
         }

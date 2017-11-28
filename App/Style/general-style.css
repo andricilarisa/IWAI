@@ -29,6 +29,11 @@ footer .line {
    top: 15%;
    position: relative;
 }
+
+.copyright p{
+  color: #163333
+}
+
 .link {
   width:24%;
   float: left;
@@ -39,7 +44,7 @@ footer .line {
 .link a {
   line-height: 70px;
   text-decoration: none;
-  color: black;
+  color: #163333;;
   text-align: center;
   font-weight: bold;
   position: absolute;
@@ -47,8 +52,15 @@ footer .line {
   left: 50%;
   margin-bottom: -50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
+
+.social-icons{
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
 .social {
   width:49%;
   float: left;
@@ -71,7 +83,8 @@ footer .line {
   transform: translate(-50%, -50%)
 }
 .echipa-mare{
-  left:30%;
+  align-content: left;
+  position: relative
 }
 .echipa{
   position: relative;
