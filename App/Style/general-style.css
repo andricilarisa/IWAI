@@ -285,3 +285,24 @@ footer .line {
     width: 100%;
   }
 }
+
+.rezolvareButton{
+  position: absolute;
+    right: 17.5%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 15px;
+}
+.rezolvareButton:hover{
+  opacity: 0.8
+}
+.game-image-response{
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 17.5%;
+    height: 99.3%;
+    width: 65%
+}

@@ -19,6 +19,47 @@
     }
     x[index-1].style.display = "block";
   }
+  function responseReceipe(){
+    var receipeImg = document.getElementById("responseReceipe");
+    receipeImg.style.display = "block";
+    var receipeBack = document.getElementById("backReceipe");
+    receipeBack.style.display = "block"
+  }
+  function backReceipe(){
+    var receipeImg = document.getElementById("responseReceipe");
+    receipeImg.style.display = "none";
+    var receipeBack = document.getElementById("backReceipe");
+    receipeBack.style.display = "none"
+  }
+  function responseFruits(){
+    var receipeImg = document.getElementById("responseFruits");
+    receipeImg.style.display = "block";
+    var receipeBack = document.getElementById("backFruits");
+    receipeBack.style.display = "block"
+  }
+  function backFruits(){
+    var receipeImg = document.getElementById("responseFruits");
+    receipeImg.style.display = "none";
+    var receipeBack = document.getElementById("backFruits");
+    receipeBack.style.display = "none"
+  }
+  function responseDecorative(){
+    var receipeImg = document.getElementById("responseDecorative");
+    receipeImg.style.display = "block";
+    var receipeBack = document.getElementById("backDecorative");
+    receipeBack.style.display = "block"
+  }
+  function backDecorative(){
+    var receipeImg = document.getElementById("responseDecorative");
+    receipeImg.style.display = "none";
+    var receipeBack = document.getElementById("backDecorative");
+    receipeBack.style.display = "none"
+  }
+  function point_it(event){
+	pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
+	pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
+	console.log(pos_x, pos_y)
+}
   </script>
 </head>
 <body>
@@ -36,10 +77,24 @@
         <h2>Cauta diferentele in imaginile de mai jos</h2>
         <div>
           <div class="game theGame">
-            <img id="image1" class="game-image" src="../Resources/Images/diferenta.jpg">
+            <div onclick="point_it(event)">
+              <img id="image1" class="game-image" src="../Resources/Images/differences/receipe.jpg">
+              <button onclick="responseReceipe()" class="rezolvareButton">Rezolvare</button>
+            </div>
+            <img id="responseReceipe"  class="game-image-response" src="../Resources/Images/differences/response_receipe.jpg">
+            <button id="backReceipe" onclick="backReceipe()" style="display:none; z-index:100; top: 0" class="rezolvareButton">Inapoi</button>
           </div>
           <div class="game theGame" style="display: none">
-            <img id="image2" class="game-image" src="../Resources/Images/diferenta1.jpg">
+            <img id="image2" class="game-image" src="../Resources/Images/differences/decorative.jpg">
+            <button onclick="responseDecorative()" class="rezolvareButton">Rezolvare</button>
+            <img id="responseDecorative"  class="game-image-response" src="../Resources/Images/differences/response_decorative.jpg">
+            <button id="backDecorative" onclick="backDecorative()" style="display:none; z-index:100; top: 0" class="rezolvareButton">Inapoi</button>
+          </div>
+          <div class="game theGame" style="display: none">
+            <img id="image2" class="game-image" src="../Resources/Images/differences/fruits.jpg">
+            <button onclick="responseFruits()" class="rezolvareButton">Rezolvare</button>
+            <img id="responseFruits"  class="game-image-response" src="../Resources/Images/differences/response_fruits.jpg">
+            <button id="backFruits" onclick="backFruits()" style="display:none; z-index:100; top: 0" class="rezolvareButton">Inapoi</button>
           </div>
           <button class="slider-button left-orientation" onclick="nextOne(-1)">&#10094;</button>
           <button class="slider-button right-orientation" onclick="nextOne(1)">&#10095;</button>
