@@ -300,9 +300,25 @@ footer .line {
 .game-image-response{
     display: none;
     position: absolute;
-    z-index: 100;
+    z-index: 1000;
     top: 0;
     left: 17.5%;
     height: 99.3%;
     width: 65%
+}
+
+.visible{
+  opacity: : 1;
+}
+
+.finalGameText{
+    position: absolute;
+    z-index: 1000;
+    color: white;
+    text-align: center;
+    left: 39%;
+    font-size: 25px;
+    padding: 10px;
+    background-color: #127D78;
+    border-radius: 3px;
 }

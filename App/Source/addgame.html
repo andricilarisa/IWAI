@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../Style/general-style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script>
+var nr_image=0;
+let adnotation=[];
+let tit;
+function point_it(event,nr){
+	pos_x = event.offsetX? (event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
+	pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
+  adnotation[nr][adnotation[nr][0]][0]=adnotation[nr][adnotation[nr][0]][0]+1;
+  adnotation[nr][adnotation[nr][0]][adnotation[nr][adnotation[nr][0]][0]]={x:pos_x,y:pos_y};
+  console.log(adnotation);
+}
+function add_game(){
+tit=document.getElementById("title").value;
+console.log(tit);
+var elem = document.getElementById('addgame');
+    elem.parentNode.removeChild(elem);
+var div = document.createElement('div');
+div.innerHTML = `
+    <div id="gameadding">
+      <h3>${tit}</h3>
+      <div id="add_image_div"></div>
+      <input type="file" onchange="add_image()" item-width="50px" item-height="150px"/>
+      <button onclick="save_game()" item-width="50px" item-height="150px">Save game</button>
+    </div>
+`;
+document.getElementById('game').appendChild(div);
+}
+function add_image(){
+nr_image=nr_image+1;
+
+adnotation[0]=nr_image;
+adnotation[nr_image]=[];
+adnotation[nr_image][0]=0;
+console.log(adnotation[1][0]);
+/*  var fso  = new ActiveXObject("Scripting.FileSystemObject");
+   var fh = fso.CreateTextFile("../Resources/"+tit+nr_image+".jpg", true);
+   fh.WriteLine(reader);
+   fh.Close();*/
+var div = document.createElement('div');
+div.innerHTML = `
+    <div id="image${tit}${nr_image}">
+      <img src="" id="${tit}${nr_image}" width="1080" height="640" onclick="point_it(event,${nr_image})">
+      <div id="add_adnotation"></div>
+      <button id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
+    </div>
+`;
+document.getElementById('add_image_div').appendChild(div);
+var preview = document.getElementById(tit+nr_image);
+var file    = document.querySelector('input[type=file]').files[0];
+var reader  = new FileReader();
+reader.addEventListener("load", function () {
+    preview.src = reader.result;
+  }, false);
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+function add_adnotation(nr){
+  adnotation[nr][0]=adnotation[nr][0]+1;
+  adnotation[nr][adnotation[nr][0]]=[];
+  adnotation[nr][adnotation[nr][0]][0]=0;
+  var elem = document.getElementById('button'+nr);
+    elem.parentNode.removeChild(elem);
+  
+  var div = document.createElement('div');
+div.innerHTML = `
+    <div id="butons${nr}">
+      <div>
+      <input type="text" id="text${nr}/><br>
+      </div>
+      <a id="stop${nr}" onclick="stop_adnotation(${nr})" item-width="50px" item-height="150px">Stop adnotation</a>
+      <button id="Delete${nr}" onclick="Delete_adnotation(${nr})" item-width="50px" item-height="150px">Delete adnotation</button>
+    </div>
+`;
+document.getElementById('add_image_div').appendChild(div);
+  
+}
+function stop_adnotation(nr){
+  adnotation[nr][adnotation[nr][0]][0]=adnotation[nr][adnotation[nr][0]][0]+1;
+  var next=document.getElementById("text"+nr).value;
+  adnotation[nr][adnotation[nr][0]][adnotation[nr][adnotation[nr][0]][0]]=next;
+   var elem = document.getElementById('buttons'+nr);
+    elem.parentNode.removeChild(elem);
+    var div = document.createElement('div');
+div.innerHTML = `
+   <button id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
+`;
+document.getElementById('image${tit}${nr}').appendChild(div);
+  
+}
+function save_game(){
+  
+}
+  </script>
+</head>
+<body>
+  <div class="row" style="width: 100%">
+    <div id="sideBar" class="side-bar">
+      <div class="image-place">
+        <image style="width: 150px; height: 150px;" src="../Resources/Images/logo.jpg"/>
+      </div>
+      <a class="sub-menu" href="../Source/home.html">Acas&#259;</a>
+      <a class="sub-menu" href="../Source/chooseGame.html">Jocuri</a>
+      <a class="sub-menu" href="#">Exploreaz&#259;</a>
+    </div>
+    <div class="right-side" style="text-align: center; color: #127D78">
+      <div class="footer-container">
+        <div>
+          <div class="game theGame", id="game">
+            <form id="addgame" >
+              <input type="text" id="title"/>
+              <a onclick="add_game()" item-width="50px" item-height="150px"> Create Game</a>
+            </form>
+          </div>
+      </div>
+    </div>
+    <footer>
+      <div class="copyright">
+        <p>&copy 2017 - InterImage Team</p>
+      </div>
+      <div class="link">
+        <a href="../Source/despreNoi.html">Despre noi</a>
+      </div>
+      <!--<div class="line"></div>-->
+      <div class="social">
+        <a href="facebook.com"><image class="social-icons" src="../Resources/Images/fb.png"/></a>
+        <a href="tweeter.com" ><image class="social-icons" src="../Resources/Images/twitter.jpg"/></a>
+        <a href="tweeter.com" ><image class="social-icons" src="../Resources/Images/google.png"/></a>
+      </div>
+      <br><br><br>
+    </footer>
+  </div>
+</body>
+</html>
