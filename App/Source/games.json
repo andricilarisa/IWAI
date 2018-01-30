@@ -1,0 +1,26 @@
+{
+	"game":[
+		{
+			"name":"HountedHouse",
+			"scenario":[
+				{"first":{"picture":"HountedHouse1","coordinates":1,"nextimage":"HountedHouse2"}},
+				{"HountedHouse2":[{"coordinates":2},{"nextimage":"HountedHouse3"}]},
+				{"HountedHouse3":[{"coordinates":2},{"nextimage":"HountedHouse4"}]},
+				{"HountedHouse4":[{"coordinates":2},{"nextimage":"HountedHouse5"}]},
+				{"HountedHouse6":[{"coordinates":2},{"nextimage":"HountedHouse7"}]},
+				{"HountedHouse7":{"nextimage":"HountedHouse3"}}
+			]
+		},
+		{
+			"name":"bau",
+			"scenario":[
+				{"first":{"picture":"HountedHouse2","coordinates":1,"nextimage":"HountedHouse2"}},
+				{"HountedHouse2":[{"coordinates":2},{"nextimage":"HountedHouse3"}]},
+				{"HountedHouse3":[{"coordinates":2},{"nextimage":"HountedHouse4"}]},
+				{"HountedHouse4":[{"coordinates":2},{"nextimage":"HountedHouse5"}]},
+				{"HountedHouse6":[{"coordinates":2},{"nextimage":"HountedHouse7"}]},
+				{"HountedHouse7":{"nextimage":"HountedHouse3"}}
+			]
+		}
+	]
+}

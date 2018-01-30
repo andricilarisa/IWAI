@@ -2,48 +2,40 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="../Style/general-style.css">
+  <link rel="stylesheet" type="text/css" href="../Style/escapeRoom.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <script>
+  <script src="escapeRoom.js"></script>
+   <script>
   var index = 1;
   showImage(index);
+
   function nextOne(n) {
     showImage(index += n);
   }
   function showImage(n) {
-    var i;
-    var x = document.getElementsByClassName("theGame");
-    if (n > x.length) {index = 1}
-    if (n < 1) {index = x.length}
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-    x[index-1].style.display = "block";
+  var i;
+  var x = document.getElementsByClassName("theGame");
+  if (n > x.length) {index = 1}
+  if (n < 1) {index = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
   }
-function fullScreenFirstGame(){
-  var modal = document.getElementById('fullScreenModal');
-  var img = document.getElementById("image1");
-  var modalImg = document.getElementById("emptyImg");
-  modal.style.display = "block";
-  modalImg.src = img.src;
-  var span = document.getElementsByClassName("close")[0];
-  span.onclick = function() {
-    modal.style.display = "none";
+  x[index-1].style.display = "block";
   }
+
+  </script> 
+  <style >
+  body{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
 }
-function fullScreenSecondGame(){
-  var modal = document.getElementById('fullScreenModal');
-  var img = document.getElementById("image2");
-  var modalImg = document.getElementById("emptyImg");
-  modal.style.display = "block";
-  modalImg.src = img.src;
-  var span = document.getElementsByClassName("close")[0];
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-}
-  </script>
+
+</style>
 </head>
-<body>
+<body id="body">
+  <div id= "content">
   <div class="row" style="width: 100%">
     <div id="sideBar" class="side-bar">
       <div class="image-place">
@@ -57,28 +49,34 @@ function fullScreenSecondGame(){
       <div class="footer-container">
         <h2>Nu-i panica, trebuie doar sa gasesti iesirea</h2>
         <div>
-          <div class="game theGame">
+          <!-- <div class="game theGame">
             <div class="container">
               <img id="image1" class="game-image" src="../Resources/Images/jackpot.jpg">
               <div class="overlay">
-                <a id="firstImage" onclick="fullScreenFirstGame()" class="full-screen">FULL SCREEN</a>
+                <a id="firstImage" onclick="startGame()" class="full-screen">START</a>
               </div>
             </div>
-          </div>
-          <div class="game theGame" style="display: none">
+          </div> -->
+          <div id="inner">
+            </div>
+          <script type="text/javascript">
+            init();
+          </script>
+          
+          <!-- <div class="game theGame" style="display: none">
             <div class="container">
               <img id="image2" class="game-image" src="../Resources/Images/fotbal.jpg">
               <div class="overlay">
-                <a id="secondImage" onclick="fullScreenSecondGame()" class="full-screen">FULL SCREEN</a>
+                <a id="secondImage" onclick="startGame()" class="full-screen">START</a>
               </div>
             </div>
-          </div>
+          </div> -->
           <button class="slider-button left-orientation" onclick="nextOne(-1)">&#10094;</button>
-          <button class="slider-button right-orientation" onclick="nextOne(1)">&#10095;</button>
+          <button class="slider-button right-orientation" onclick="nextOne(1)">&#10095;</button> 
         </div>
       </div>
     </div>
-    <footer>
+    <footer style="position: absolute; bottom: 0;">
       <div class="copyright">
       <p>&copy 2017 - InterImage Team</p>
       </div>
@@ -93,11 +91,15 @@ function fullScreenSecondGame(){
       </div>
     </footer>
   </div>
-  <!-- Modal micut pentru full screen game -->
-  <div id="fullScreenModal" class="modal">
+</div>
+
+<div id="game">
+</div>
+  <!--  Modal micut pentru full screen game 
+   <div id="fullScreenModal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="emptyImg">
-  </div>
+  </div>  -->
 
 </body>
 </html>
