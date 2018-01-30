@@ -66,19 +66,19 @@ function add_adnotation(nr){
   adnotation[nr][adnotation[nr][0]][0]=0;
   var elem = document.getElementById('button'+nr);
     elem.parentNode.removeChild(elem);
-  
+
   var div = document.createElement('div');
 div.innerHTML = `
     <div id="butons${nr}">
       <div>
-      <input type="text" id="text${nr}/><br>
+      <input type="text" id="text${nr}"/><br>
       </div>
       <a id="stop${nr}" onclick="stop_adnotation(${nr})" item-width="50px" item-height="150px">Stop adnotation</a>
       <button id="Delete${nr}" onclick="Delete_adnotation(${nr})" item-width="50px" item-height="150px">Delete adnotation</button>
     </div>
 `;
 document.getElementById('add_image_div').appendChild(div);
-  
+
 }
 function stop_adnotation(nr){
   adnotation[nr][adnotation[nr][0]][0]=adnotation[nr][adnotation[nr][0]][0]+1;
@@ -91,7 +91,7 @@ div.innerHTML = `
    <button id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
 `;
 document.getElementById("image${tit}${nr}").appendChild(div);
-  
+
 }
 function save_game(){
   var text='{"game":[{"name": "'+tit+'","scenario"{"first":"'+tit+'1",';
@@ -123,7 +123,6 @@ var docjson= JSON.parse(text);
       </div>
       <a class="sub-menu" href="../Source/home.html">Acas&#259;</a>
       <a class="sub-menu" href="../Source/chooseGame.html">Jocuri</a>
-      <a class="sub-menu" href="#">Exploreaz&#259;</a>
       <a class="sub-menu" href="../Source/addgame.html">Adaug&#259; joc</a>
     </div>
     <div class="right-side" style="text-align: center; color: #127D78">
@@ -138,7 +137,7 @@ var docjson= JSON.parse(text);
       </div>
     </div>
     <footer>
-      
+
     </footer>
   </div>
 </body>
