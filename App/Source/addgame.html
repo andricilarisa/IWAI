@@ -90,11 +90,27 @@ function stop_adnotation(nr){
 div.innerHTML = `
    <button id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
 `;
-document.getElementById('image${tit}${nr}').appendChild(div);
+document.getElementById("image${tit}${nr}").appendChild(div);
   
 }
 function save_game(){
-  var text='{"game":[{"name": "${tit}","scenario"{first'
+  var text='{"game":[{"name": "'+tit+'","scenario"{"first":"'+tit+'1",';
+  var i=0,j=0,k=0;
+  for(i=1;i<adnotation[1][0];i++){
+    text=text+'"adnotare'+i+'":[';
+    for(j=1;j<=adnotation[1][i][0]-1;j++){
+        text=text+'{"x":"'+adnotation[1][i][j].x+'","y":"'+adnotation[1][i][j].y+'"},';
+    }
+  text=text+'"nextimage":'
+  }
+  for(k=2;k<adnotation[0];k++){
+    for(i=1;i<adnotation[k][0];i++){
+    text=text+'"adnotare'+i+'":[';
+    for(j=1;j<=adnotation[k][i][0]-1;j++){
+        text=text+'{"x":"'+adnotation[k][i][j].x+'","y":"'+adnotation[k][i][j].y+'"},';
+    }
+  }
+  }
 var docjson= JSON.parse(text);
 }
   </script>
@@ -108,6 +124,7 @@ var docjson= JSON.parse(text);
       <a class="sub-menu" href="../Source/home.html">Acas&#259;</a>
       <a class="sub-menu" href="../Source/chooseGame.html">Jocuri</a>
       <a class="sub-menu" href="#">Exploreaz&#259;</a>
+      <a class="sub-menu" href="../Source/addgame.html">Adaug&#259; joc</a>
     </div>
     <div class="right-side" style="text-align: center; color: #127D78">
       <div class="footer-container">
@@ -115,25 +132,13 @@ var docjson= JSON.parse(text);
           <div class="game theGame", id="game">
             <form id="addgame" >
               <input type="text" id="title"/>
-              <a onclick="add_game()" item-width="50px" item-height="150px"> Create Game</a>
+              <a onclick="add_game()" item-width="50px" item-height="150px" style="cursor: pointer"> Create Game</a>
             </form>
           </div>
       </div>
     </div>
     <footer>
-      <div class="copyright">
-        <p>&copy 2017 - InterImage Team</p>
-      </div>
-      <div class="link">
-        <a href="../Source/despreNoi.html">Despre noi</a>
-      </div>
-      <!--<div class="line"></div>-->
-      <div class="social">
-        <a href="facebook.com"><image class="social-icons" src="../Resources/Images/fb.png"/></a>
-        <a href="tweeter.com" ><image class="social-icons" src="../Resources/Images/twitter.jpg"/></a>
-        <a href="tweeter.com" ><image class="social-icons" src="../Resources/Images/google.png"/></a>
-      </div>
-      <br><br><br>
+      
     </footer>
   </div>
 </body>
