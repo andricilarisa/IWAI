@@ -1,0 +1,26 @@
+{
+	"game":[
+		{
+			"name":"HountedHouse",
+			"scenario":[
+				{"first":{"picture":"HountedHouse1","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse2"}},
+				{"HountedHouse2":{"picture":"HountedHouse2","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse3"}},
+				{"HountedHouse3":{"picture":"HountedHouse3","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse4"}},
+				{"HountedHouse4":{"picture":"HountedHouse4","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse5"}},
+				{"HountedHouse5":{"picture":"HountedHouse5","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse6"}},
+				{"HountedHouse6":{"picture":"HountedHouse6","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse7"}}
+			]
+		},
+		{
+			"name":"bau",
+			"scenario":[
+				{"first":{"picture":"HountedHouse1","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse2"}},
+				{"HountedHouse2":{"picture":"HountedHouse2","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse3"}},
+				{"HountedHouse3":{"picture":"HountedHouse3","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse4"}},
+				{"HountedHouse4":{"picture":"HountedHouse4","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse5"}},
+				{"HountedHouse5":{"picture":"HountedHouse5","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse6"}},
+				{"HountedHouse6":{"picture":"HountedHouse6","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse7"}}
+			]
+		}
+	]
+}
