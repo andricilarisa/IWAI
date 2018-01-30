@@ -24,7 +24,7 @@
 		var el = document.createElement('html');
 		var html = ['<div class="game theGame">','<div class="container">','<img name='].join('');
 	    html = html + actual_JSON.game[i].name;
-	    html = html + 'class="game-image " style="height: 50%;width:60%; margin-top: 39px;" src="imagini/';
+	    html = html + 'class="game-image " style="height: 50%;width:60%; margin-top: 39px;" src="../Resources/Images/escape/';
 	    html = html + actual_JSON.game[i].scenario[0].first.picture +'.jpg';
 	    html = html + '"><div class="overlay"><a onclick="startGame('+i+')" class="full-screen">START</a></div></div></div>'
 	 	console.log(actual_JSON.game[i].scenario[0].first.picture);
@@ -45,7 +45,7 @@ function startGame(i){
     var x = document.getElementById("content");
     x.style.display = "none";
     var el = document.createElement('html');
-    var html = ['<div id="conti" class="container">','<div style="position:relative;"><img style="position:relative; width:65%; margin-bottom:1px; margin-top:5px; margin-left:17%; margin-right:10%;" src="imagini/'].join('');
+    var html = ['<div id="conti" class="container">','<div style="position:relative;"><img style="position:relative; width:65%; margin-bottom:1px; margin-top:5px; margin-left:17%; margin-right:10%;" src="../Resources/Images/escape/'].join('');
     html = html + actual_JSON.game[i].scenario[0].first.picture +'.jpg'+'"'+'usemap="#'+actual_JSON.game[i].scenario[0].first.picture+'"><div onclick="closeGame()" style="position:absolute; color:white; position: relative;margin-left: 97%;margin-top: -49%; font-size: 30pt; cursor:pointer;">x</div>';
     
     console.log(actual_JSON.game[i].scenario[0].first.picture);
@@ -87,6 +87,8 @@ function next(nextImg){
     loadJSON(function(response) {
 
   // Parse JSON string into object
-    actual_JSON = JSON.parse(response);
+    actual_JSON = JSON.parse(response); 
+
+});
 }
 
