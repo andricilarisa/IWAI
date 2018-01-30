@@ -11,16 +11,10 @@
 	margin-bottom: 30px;
 }
 
-#sub{
-
-	margin-top: 2px;
-	color: black;
-	text-align: center;
-}
-
 ol{
 	list-style: none;
 	padding-left: 0px;
+	line-height: 2.1
 }
 
 article{
@@ -40,11 +34,15 @@ hr{
 	margin-top: 1px;
 
 }
-
+p{
+	line-height: 2.1
+}
 .logo{
 	width: 150px;
 	height: 50px;
 	margin-top: 10px;
 }
-
-
+.subtitle{
+	color: #4b0061;
+	font-weight: bold;
+}
