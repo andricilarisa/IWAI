@@ -22,10 +22,10 @@ var elem = document.getElementById('addgame');
 var div = document.createElement('div');
 div.innerHTML = `
     <div id="gameadding">
-      <h3>${tit}</h3>
+      <h2>${tit}</h2>
       <div id="add_image_div"></div>
-      <input type="file" onchange="add_image()" item-width="50px" item-height="150px"/>
-      <button onclick="save_game()" item-width="50px" item-height="150px">Save game</button>
+      <input style="font-size:15px" type="file" onchange="add_image()" item-width="50px" item-height="150px"/>
+      <button style="margin-bottom: 50px" class="create-game-button" onclick="save_game()" item-width="50px" item-height="150px">Save game</button>
     </div>
 `;
 document.getElementById('game').appendChild(div);
@@ -44,9 +44,9 @@ console.log(adnotation[1][0]);
 var div = document.createElement('div');
 div.innerHTML = `
     <div id="image${tit}${nr_image}">
-      <img src="" id="${tit}${nr_image}" width="1080" height="640" onclick="point_it(event,${nr_image})">
+      <img src="" id="${tit}${nr_image}" width="500" height="500" onclick="point_it(event,${nr_image})">
       <div id="add_adnotation"></div>
-      <button id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
+      <button style="margin: 10px" class="create-game-button" id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
     </div>
 `;
 document.getElementById('add_image_div').appendChild(div);
@@ -74,7 +74,7 @@ div.innerHTML = `
       <input type="text" id="text${nr}"/><br>
       </div>
       <a id="stop${nr}" onclick="stop_adnotation(${nr})" item-width="50px" item-height="150px">Stop adnotation</a>
-      <button id="Delete${nr}" onclick="Delete_adnotation(${nr})" item-width="50px" item-height="150px">Delete adnotation</button>
+      <button class="create-game-button" id="Delete${nr}" onclick="Delete_adnotation(${nr})" item-width="50px" item-height="150px">Delete adnotation</button>
     </div>
 `;
 document.getElementById('add_image_div').appendChild(div);
@@ -88,7 +88,7 @@ function stop_adnotation(nr){
     elem.parentNode.removeChild(elem);
     var div = document.createElement('div');
 div.innerHTML = `
-   <button id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
+   <button style="margin: 10px" class="create-game-button" id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
 `;
 document.getElementById("image${tit}${nr}").appendChild(div);
 
@@ -130,15 +130,13 @@ var docjson= JSON.parse(text);
         <div>
           <div class="game theGame", id="game">
             <form id="addgame" >
+              <label for="gameName">Game name: </label>
               <input type="text" id="title" style="padding: 10px;border-radius: 5px;border: none;"/>
-              <a onclick="add_game()" item-width="50px" item-height="150px" style="cursor: pointer"> Create Game</a>
+              <a onclick="add_game()" item-width="50px" item-height="150px" class="create-game-button" style=""> Create Game</a>
             </form>
           </div>
       </div>
     </div>
-    <footer>
-
-    </footer>
   </div>
 </body>
 </html>
