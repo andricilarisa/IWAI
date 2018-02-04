@@ -12,17 +12,17 @@ function point_it(event,nr){
 	pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
   adnotation[nr][adnotation[nr][0]][0]=adnotation[nr][adnotation[nr][0]][0]+1;
   adnotation[nr][adnotation[nr][0]][adnotation[nr][adnotation[nr][0]][0]]={x:pos_x,y:pos_y};
-  console.log(adnotation);
+  console.log("Adnotare cred",adnotation);
 }
 function add_game(){
 tit=document.getElementById("title").value;
-console.log(tit);
+console.log("Titlu: ", tit);
 var elem = document.getElementById('addgame');
     elem.parentNode.removeChild(elem);
 var div = document.createElement('div');
 div.innerHTML = `
     <div id="gameadding">
-      <h2>${tit}</h2>
+      <h1 style="margin-top: -25px">${tit}</h1>
       <div id="add_image_div"></div>
       <input style="font-size:15px" type="file" onchange="add_image()" item-width="50px" item-height="150px"/>
       <button style="margin-bottom: 50px" class="create-game-button" onclick="save_game()" item-width="50px" item-height="150px">Save game</button>
@@ -36,7 +36,7 @@ nr_image=nr_image+1;
 adnotation[0]=nr_image;
 adnotation[nr_image]=[];
 adnotation[nr_image][0]=0;
-console.log(adnotation[1][0]);
+console.log("Adnotare de pe pozitia 1,0: ",adnotation[1][0]);
 /*  var fso  = new ActiveXObject("Scripting.FileSystemObject");
    var fh = fso.CreateTextFile("../Resources/"+tit+nr_image+".jpg", true);
    fh.WriteLine(reader);
@@ -128,7 +128,7 @@ var docjson= JSON.parse(text);
     <div class="right-side" style="text-align: center; color: #127D78">
       <div class="footer-container">
         <div>
-          <div class="game theGame", id="game">
+          <div style="margin-top: 50px" class="game theGame" id="game">
             <form id="addgame" >
               <label for="gameName">Game name: </label>
               <input type="text" id="title" style="padding: 10px;border-radius: 5px;border: none;"/>
