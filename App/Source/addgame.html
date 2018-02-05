@@ -22,7 +22,7 @@ var elem = document.getElementById('addgame');
 var div = document.createElement('div');
 div.innerHTML = `
     <div id="gameadding">
-      <h1 style="margin-top: -25px">${tit}</h1>
+      <h1 style="margin-top: -25px; margin-bottom: 0px">${tit}</h1>
       <div id="add_image_div"></div>
       <input style="font-size:15px" type="file" onchange="add_image()" item-width="50px" item-height="150px"/>
       <button style="margin-bottom: 50px" class="create-game-button" onclick="save_game()" item-width="50px" item-height="150px">Save game</button>
@@ -32,7 +32,6 @@ document.getElementById('game').appendChild(div);
 }
 function add_image(){
 nr_image=nr_image+1;
-
 adnotation[0]=nr_image;
 adnotation[nr_image]=[];
 adnotation[nr_image][0]=0;
@@ -43,23 +42,211 @@ console.log("Adnotare de pe pozitia 1,0: ",adnotation[1][0]);
    fh.Close();*/
 var div = document.createElement('div');
 div.innerHTML = `
+  <div id="page">
     <div id="image${tit}${nr_image}">
-      <img src="" id="${tit}${nr_image}" width="500" height="500" onclick="point_it(event,${nr_image})">
-      <div id="add_adnotation"></div>
+    <canvas id="${tit}${nr_image}" width="600" height="550" onclick="point_it(event,${nr_image})"></canvas>
+    <canvas id="${tit}draw${nr_image}" width="600" height="550" style="position:absolute;background:transparent;z-index:100; left: 26.2%"></canvas>    <div id="add_adnotation"></div>
       <button style="margin: 10px" class="create-game-button" id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
     </div>
+    <div style="position:absolute;top:300px;">
+     <canvas id="finalcanvas"></canvas>
+    </div>
+  </div>
 `;
+
 document.getElementById('add_image_div').appendChild(div);
-var preview = document.getElementById(tit+nr_image);
+// var preview = document.getElementById(tit+nr_image);
 var file    = document.querySelector('input[type=file]').files[0];
 var reader  = new FileReader();
 reader.addEventListener("load", function () {
-    preview.src = reader.result;
+    var canvas = document.getElementById(tit+nr_image);
+    var context = canvas.getContext('2d');
+    var imageObj = new Image();
+    imageObj.onload = function(){
+       context.drawImage(imageObj, 69,50);
+     }
+    imageObj.src = reader.result;
   }, false);
   if (file) {
     reader.readAsDataURL(file);
   }
 }
+
+//canvas try, draw on image (hope this will work)
+   ctx = document.getElementById(tit+nr_image).getContext("2d");
+   ctx2 = document.getElementById(tit+"draw"+nr_image).getContext("2d");
+   ctx.strokeStyle = "#ffffff";
+   ctx.fillStyle = "#ff2626"
+   ctx.lineWidth = 3;
+   console.log("o luat imaginile")
+   var imageObj = new Image();
+
+   imageObj.onload = function() { //ion-header-bar
+     var MAX_WIDTH = 500;
+     var MAX_HEIGHT = 500;
+     tempW = imageObj.width;
+     tempH = imageObj.height;
+     if (tempW > tempH) {
+       if (tempW > MAX_WIDTH) {
+         tempH *= MAX_WIDTH / tempW;
+         tempW = MAX_WIDTH;
+       }
+     } else {
+       if (tempH > MAX_HEIGHT) {
+         tempW *= MAX_HEIGHT / tempH;
+         tempH = MAX_HEIGHT;
+       }
+     }
+
+     document.getElementById(tit+"draw"+nr_image).height = tempH;
+     document.getElementById(tit+"draw"+nr_image).width = tempW;
+     document.getElementById(tit+nr_image).height = tempH;
+     document.getElementById(tit+nr_image).width = tempW;
+     ctx2.drawImage(imageObj, 0, 0, tempW, tempH);
+
+   };
+   imageObj.src = reader.result;
+   console.log("puncte pe aici sa vedem de intra")
+    // setup to trigger drawing on mouse or touch
+   drawTouch();
+   drawPointer();
+   drawMouse();
+
+   var drawnLines = [];
+    //all draw functions have minus 50px height to adjust for header
+    // prototype to	start drawing on touch using canvas moveTo and lineTo
+   function drawTouch() {
+     var start = function(e) {
+       ctx.beginPath();
+       x = e.changedTouches[0].pageX;
+       y = e.changedTouches[0].pageY - 50;
+       ctx.moveTo(x, y);
+       drawnLines.push(["m", x, y]);
+     };
+     var move = function(e) {
+       e.preventDefault();
+       x = e.changedTouches[0].pageX;
+       y = e.changedTouches[0].pageY - 50;
+       ctx.lineTo(x, y);
+       ctx.stroke();
+       drawnLines.push(["l", x, y]);
+     };
+     document.getElementById(tit+"draw"+nr_image).addEventListener("touchstart", start, false);
+     document.getElementById(tit+"draw"+nr_image).addEventListener("touchmove", move, false);
+   };
+
+    // prototype to	start drawing on pointer(microsoft ie) using canvas moveTo and lineTo
+   function drawPointer() {
+     var start = function(e) {
+       e = e.originalEvent;
+       ctx.beginPath();
+       x = e.pageX;
+       y = e.pageY - 50;
+       ctx.moveTo(x, y);
+       drawnLines.push(["m", x, y]);
+     };
+     var move = function(e) {
+       e.preventDefault();
+       e = e.originalEvent;
+       x = e.pageX;
+       y = e.pageY - 50;
+       ctx.lineTo(x, y);
+       ctx.stroke();
+       drawnLines.push(["l", x, y]);
+     };
+     document.getElementById(tit+"draw"+nr_image).addEventListener("MSPointerDown", start, false);
+     document.getElementById(tit+"draw"+nr_image).addEventListener("MSPointerMove", move, false);
+   };
+console.log("intrat in drawpointer ")
+    // prototype to	start drawing on mouse using canvas moveTo and lineTo
+   function drawMouse() {
+     var clicked = 0;
+     var start = function(e) {
+       clicked = 1;
+       ctx.beginPath();
+       x = e.pageX;
+       y = e.pageY - 50;
+       ctx.moveTo(x, y);
+       drawnLines.push(["m", x, y]);
+     };
+     var move = function(e) {
+       if (clicked) {
+         x = e.pageX;
+         y = e.pageY - 50;
+         ctx.lineTo(x, y);
+         ctx.stroke();
+         drawnLines.push(["l", x, y]);
+       }
+     };
+     var stop = function(e) {
+       clicked = 0;
+     };
+     document.getElementById(tit+"draw"+nr_image).addEventListener("mousedown", start, false);
+     document.getElementById(tit+"draw"+nr_image).addEventListener("mousemove", move, false);
+     document.addEventListener("mouseup", stop, false);
+   };
+   console.log("o iesit in mousedow")
+   var hideModal = function() {
+
+     var finalcanvas = document.getElementById("finalcanvas");
+     var ctxfinal = finalcanvas.getContext("2d");
+     var imageObj = new Image();
+     imageObj.onload = function() {
+
+       finalcanvas.width = imageObj.width;
+       finalcanvas.height = imageObj.height;
+
+       ctxfinal.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height);
+       ctxfinal.beginPath();
+
+       var ratio = finalcanvas.width / document.getElementById(tit+"draw"+nr_image).width;
+       ctxfinal.lineWidth = 3 * ratio;
+
+       for (i = 0; i < drawnLines.length; i++) {
+         var xm = drawnLines[i][1] * ratio;
+         var ym = drawnLines[i][2] * ratio;
+
+         switch (drawnLines[i][0]) {
+           case "l":
+             ctxfinal.lineTo(xm, ym);
+           case "m":
+             ctxfinal.moveTo(xm, ym);
+         }
+       }
+       ctxfinal.stroke();
+       //I then generate a a image from this final canvas. So now i have the image in the original size + the sadly a bit pixely annotations
+       //$scope.editimage.image = finalcanvas.toDataURL("image/jpeg");
+     };
+     imageObj.src = reader.result;
+   };
+
+
+
+$("#canvas").click(function(e){
+     getPosition(e);
+});
+
+var pointSize = 3;
+
+function getPosition(event){
+     var rect = canvas.getBoundingClientRect();
+     var x = event.clientX - rect.left;
+     var y = event.clientY - rect.top;
+
+     drawCoordinates(x,y);
+}
+
+function drawCoordinates(x,y){
+  	var ctx = document.getElementById("canvas").getContext("2d");
+
+
+  	ctx.fillStyle = "#ff2626"; // Red color
+
+    ctx.beginPath();
+    ctx.arc(x, y, pointSize, 0, Math.PI * 2, true);
+    ctx.fill();
+}
+
 function add_adnotation(nr){
   adnotation[nr][0]=adnotation[nr][0]+1;
   adnotation[nr][adnotation[nr][0]]=[];
@@ -68,12 +255,12 @@ function add_adnotation(nr){
     elem.parentNode.removeChild(elem);
 
   var div = document.createElement('div');
-div.innerHTML = `
-    <div id="butons${nr}">
+  div.innerHTML = `
+    <div style="margin-bottom: 10px" id="butons${nr}">
       <div>
-      <input type="text" id="text${nr}"/><br>
+      <input style="margin: 10px; border-radius: 5px; border: none; padding: 10px" type="text" id="text${nr}"/><br>
       </div>
-      <a id="stop${nr}" onclick="stop_adnotation(${nr})" item-width="50px" item-height="150px">Stop adnotation</a>
+      <button class="create-game-button" style="cursor: pointer" id="stop${nr}" onclick="stop_adnotation(${nr})" item-width="50px" item-height="150px">Stop adnotation</button>
       <button class="create-game-button" id="Delete${nr}" onclick="Delete_adnotation(${nr})" item-width="50px" item-height="150px">Delete adnotation</button>
     </div>
 `;
