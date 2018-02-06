@@ -8,11 +8,12 @@ var nr_image=0;
 let adnotation=[];
 let tit;
 function point_it(event,nr){
-	pos_x = event.offsetX? (event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
-	pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
+  pos_x = event.offsetX? (event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
+  pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
   adnotation[nr][adnotation[nr][0]][0]=adnotation[nr][adnotation[nr][0]][0]+1;
   adnotation[nr][adnotation[nr][0]][adnotation[nr][adnotation[nr][0]][0]]={x:pos_x,y:pos_y};
   console.log("Adnotare cred",adnotation);
+  getPosition(event);
 }
 function add_game(){
 tit=document.getElementById("title").value;
@@ -45,7 +46,7 @@ div.innerHTML = `
   <div id="page">
     <div id="image${tit}${nr_image}">
     <canvas id="${tit}${nr_image}" width="600" height="550" onclick="point_it(event,${nr_image})"></canvas>
-    <canvas id="${tit}draw${nr_image}" width="600" height="550" style="position:absolute;background:transparent;z-index:100; left: 26.2%"></canvas>    <div id="add_adnotation"></div>
+    <div id="add_adnotation"></div>
       <button style="margin: 10px" class="create-game-button" id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
     </div>
     <div style="position:absolute;top:300px;">
@@ -157,7 +158,7 @@ reader.addEventListener("load", function () {
      document.getElementById(tit+"draw"+nr_image).addEventListener("MSPointerDown", start, false);
      document.getElementById(tit+"draw"+nr_image).addEventListener("MSPointerMove", move, false);
    };
-console.log("intrat in drawpointer ")
+    console.log("intrat in drawpointer ")
     // prototype to	start drawing on mouse using canvas moveTo and lineTo
    function drawMouse() {
      var clicked = 0;
@@ -221,14 +222,9 @@ console.log("intrat in drawpointer ")
    };
 
 
-
-$("#canvas").click(function(e){
-     getPosition(e);
-});
-
-var pointSize = 3;
-
 function getPosition(event){
+	 console.log("get position function")
+	 canvas = document.getElementById(tit+nr_image);
      var rect = canvas.getBoundingClientRect();
      var x = event.clientX - rect.left;
      var y = event.clientY - rect.top;
@@ -237,13 +233,11 @@ function getPosition(event){
 }
 
 function drawCoordinates(x,y){
-  	var ctx = document.getElementById("canvas").getContext("2d");
-
-
+  	var ctx = document.getElementById(tit+nr_image).getContext("2d");
   	ctx.fillStyle = "#ff2626"; // Red color
 
     ctx.beginPath();
-    ctx.arc(x, y, pointSize, 0, Math.PI * 2, true);
+    ctx.arc(x, y, 10, 0, Math.PI * 2, true);
     ctx.fill();
 }
 
