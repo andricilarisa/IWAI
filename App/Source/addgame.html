@@ -32,6 +32,10 @@ div.innerHTML = `
 document.getElementById('game').appendChild(div);
 }
 function add_image(){
+	if(nr_image >= 1){
+       c = document.getElementById(tit+"draw"+nr_image);
+       c.style.pointerEvents = "none"
+	}
 nr_image=nr_image+1;
 adnotation[0]=nr_image;
 adnotation[nr_image]=[];
@@ -45,7 +49,8 @@ var div = document.createElement('div');
 div.innerHTML = `
   <div id="page">
     <div id="image${tit}${nr_image}">
-    <canvas id="${tit}${nr_image}" width="600" height="550" onclick="point_it(event,${nr_image})"></canvas>
+    <canvas id="${tit}${nr_image}" width="600" height="550"></canvas>
+    <canvas id="${tit}draw${nr_image}" width="600" height="550" style="position: absolute; left: 15%" onclick="point_it(event,${nr_image})"></canvas>
     <div id="add_adnotation"></div>
       <button style="margin: 10px" class="create-game-button" id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
     </div>
@@ -67,6 +72,7 @@ reader.addEventListener("load", function () {
        context.drawImage(imageObj, 69,50);
      }
     imageObj.src = reader.result;
+    canvas.style.bac
   }, false);
   if (file) {
     reader.readAsDataURL(file);
@@ -74,7 +80,7 @@ reader.addEventListener("load", function () {
 }
 
 function getPosition(event){
-	 canvas = document.getElementById(tit+nr_image);
+	 canvas = document.getElementById(tit+"draw"+nr_image);
      var rect = canvas.getBoundingClientRect();
      var x = event.clientX - rect.left;
      var y = event.clientY - rect.top;
@@ -84,9 +90,8 @@ function getPosition(event){
 }
 
 function drawCoordinates(x,y){
-  	var ctx = document.getElementById(tit+nr_image).getContext("2d");
+  	var ctx = document.getElementById(tit+"draw"+nr_image).getContext("2d");
   	ctx.fillStyle = "#ff2626"; // Red color
-
     ctx.beginPath();
     ctx.arc(x, y, 5, 0, Math.PI * 2, true);
     ctx.fill();
@@ -97,8 +102,7 @@ function add_adnotation(nr){
   adnotation[nr][adnotation[nr][0]]=[];
   adnotation[nr][adnotation[nr][0]][0]=0;
   var elem = document.getElementById('button'+nr);
-    elem.parentNode.removeChild(elem);
-
+  elem.parentNode.removeChild(elem);
   var div = document.createElement('div');
   div.innerHTML = `
     <div style="margin-bottom: 10px" id="butons${nr}">
@@ -106,13 +110,28 @@ function add_adnotation(nr){
       <input style="margin: 10px; border-radius: 5px; border: none; padding: 10px" type="text" id="text${nr}"/><br>
       </div>
       <button class="create-game-button" style="cursor: pointer" id="stop${nr}" onclick="stop_adnotation(${nr})" item-width="50px" item-height="150px">Stop adnotation</button>
-      <button class="create-game-button" id="Delete${nr}" onclick="Delete_adnotation(${nr})" item-width="50px" item-height="150px">Delete adnotation</button>
+      <button class="create-game-button" id="Delete${nr}" onclick="delete_adnotation(${nr})" item-width="50px" item-height="150px">Delete adnotation</button>
     </div>
 `;
 document.getElementById('add_image_div').appendChild(div);
 
 }
+
+function delete_adnotation(nr){
+	console.log("Delete function for image with nr: ", nr);
+	var canvas = document.getElementById(tit+"draw"+nr);
+	canvas.style.pointerEvents = "none";
+    var context = canvas.getContext('2d');
+    context.clearRect(0,0,canvas.width, canvas.height);
+    adnotariLista = adnotariLista.filter(x=> !x.includes(nr));
+}
+
 function stop_adnotation(nr){
+  input = document.getElementById("text"+nr);
+  input.style.display = "none";
+  stopButton = document.getElementById("stop"+nr);
+  stopButton.style.display = "none";
+
   adnotation[nr][adnotation[nr][0]][0]=adnotation[nr][adnotation[nr][0]][0]+1;
   var next=document.getElementById("text"+nr).value;
   adnotation[nr][adnotation[nr][0]][adnotation[nr][adnotation[nr][0]][0]]=next;
