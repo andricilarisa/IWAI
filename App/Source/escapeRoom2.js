@@ -1,3 +1,8 @@
+ window.onload = function(){
+    nextOne(-1);
+    nextOne(1);
+ }
+
  function loadJSON(callback) {   
 
     var xobj = new XMLHttpRequest();
@@ -25,9 +30,9 @@
 		var html = ['<div class="game theGame">','<div class="container">','<img name='].join('');
 	    html = html + actual_JSON.game[i].name;
 	    html = html + 'class="game-image " style="height: 50%;width:60%; margin-top: 39px;" src="../Resources/Images/escape/';
-	    html = html + actual_JSON.game[i].scenario[0].first.picture +'.jpg';
+	    html = html + actual_JSON.game[i].scenario[0].picture +'.jpg';
 	    html = html + '"><div class="overlay"><a onclick="startGame('+i+')" class="full-screen">START</a></div></div></div>'
-	 	console.log(actual_JSON.game[i].scenario[0].first.picture);
+	 	console.log(actual_JSON.game[i].scenario[0].picture);
 		el.innerHTML = html;
 		document.getElementById('inner').appendChild(el);
 	}	
@@ -46,14 +51,14 @@ function startGame(i){
     x.style.display = "none";
     var el = document.createElement('html');
     var html = ['<div id="conti" class="container">','<div style="position:relative;"><img style="position:relative; width:65%; margin-bottom:1px; margin-top:5px; margin-left:17%; margin-right:10%;" src="../Resources/Images/escape/'].join('');
-    html = html + actual_JSON.game[i].scenario[0].first.picture +'.jpg'+'"'+'usemap="#'+actual_JSON.game[i].scenario[0].first.picture+'"><div onclick="closeGame()" style="position:absolute; color:white; position: relative;margin-left: 97%;margin-top: -49%; font-size: 30pt; cursor:pointer;">x</div>';
+    html = html + actual_JSON.game[i].scenario[0].picture +'.jpg'+'"'+'usemap="#'+actual_JSON.game[i].scenario[0].picture+'"><div onclick="closeGame()" style="position:absolute; color:white; position: relative;margin-left: 97%;margin-top: -49%; font-size: 30pt; cursor:pointer;">x</div>';
     
-    console.log(actual_JSON.game[i].scenario[0].first.picture);
+    console.log(actual_JSON.game[i].scenario[0].picture);
     console.log("done");
     document.getElementById('body').style.background = "black";
 	//document.getElementById('game').appendChild(el);
 
-    var html1 = '<script> var canvas = document.getElementById("myCanvas");var ctx = canvas.getContext("2d");ctx.beginPath();</script> <canvas id="myCanvas"style="border:none; position:absolute; margin-left:'+actual_JSON.game[i].scenario[0].first.marginleft+';margin-top:'+actual_JSON.game[i].scenario[0].first.margintop+';height:'+actual_JSON.game[i].scenario[0].first.height+';width:'+actual_JSON.game[i].scenario[0].first.width+';" onclick="next('+actual_JSON.game[i].scenario[0].first.nextimage+')"></canvas></div> ';
+    var html1 = '<script> var canvas = document.getElementById("myCanvas");var ctx = canvas.getContext("2d");ctx.beginPath();</script> <canvas id="myCanvas"style="border:none; position:absolute; margin-left:'+actual_JSON.game[i].scenario[0].marginleft+';margin-top:'+actual_JSON.game[i].scenario[0].margintop+';height:'+actual_JSON.game[i].scenario[0].height+';width:'+actual_JSON.game[i].scenario[0].width+';" onclick="next('+i+','+actual_JSON.game[i].scenario[0].nextimage+')"></canvas></div> ';
 
 
     el.innerHTML = html + html1;
@@ -69,7 +74,6 @@ function closeGame(){
     x.style.display = "block";
     document.getElementById('conti').remove();
     document.getElementById('body').style.background = "white";
-    document.getElementById('mapi').remove();
 }
 
 Element.prototype.remove = function() {
@@ -83,12 +87,33 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
     }
 }
 
-function next(nextImg){
-    loadJSON(function(response) {
+ function next(i,j){
+     console.log(i);
+     console.log(j);
+     loadJSON(function(response) {
+     closeGame();
+   // Parse JSON string into object
+     actual_JSON = JSON.parse(response); 
 
-  // Parse JSON string into object
-    actual_JSON = JSON.parse(response); 
+    
+      var x = document.getElementById("content");
+      x.style.display = "none";
+      var el = document.createElement('html');
+      var html = ['<div id="conti" class="container">','<div style="position:relative;"><img style="position:relative; width:65%; margin-bottom:1px; margin-top:5px; margin-left:17%; margin-right:10%;" src="../Resources/Images/escape/'].join('');
+      html = html + actual_JSON.game[i].scenario[j-1].picture +'.jpg"><div onclick="closeGame()" style="position:absolute; color:white; position: relative;margin-left: 97%;margin-top: -43%; font-size: 30pt; cursor:pointer;">x</div>';
+    
+      console.log(actual_JSON.game[i].scenario[j-1].picture);
+      console.log("done");
+      document.getElementById('body').style.background = "black";
+      //document.getElementById('game').appendChild(el);
 
-});
-}
+      var html1 = '<script> var canvas = document.getElementById("myCanvas");var ctx = canvas.getContext("2d");ctx.beginPath();</script> <canvas id="myCanvas"style="border:none; position:absolute; margin-left:'+actual_JSON.game[i].scenario[j-1].marginleft+';margin-top:'+actual_JSON.game[i].scenario[j-1].margintop+';height:'+actual_JSON.game[i].scenario[j-1].height+';width:'+actual_JSON.game[i].scenario[j-1].width+';" onclick="next('+i+','+actual_JSON.game[i].scenario[j-1].nextimage+')"></canvas></div> ';
+
+
+      el.innerHTML = html + html1;
+
+      document.getElementById('game').appendChild(el);
+
+ });
+ }
 
