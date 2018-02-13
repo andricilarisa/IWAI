@@ -1,25 +1,26 @@
 {
 	"game":[
 		{
-			"name":"HountedHouse",
+			"name":"HauntedHouse",
 			"scenario":[
-				{"picture":"HountedHouse1","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"2"},
-				{"picture":"HountedHouse2","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"3"},
-				{"picture":"HountedHouse3","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"4"},
-				{"picture":"HountedHouse4","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"5"},
-				{"picture":"HountedHouse5","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"6"},
-				{"picture":"HountedHouse6","marginleft":"500px","margintop":"300px","height":"350px","width":"200px"}
+				{"picture":"HauntedHouse1","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"2","text":"My aunt lives in a house where a family once died inside in a fire. My oldest cousin, whose room was in the basement, would have horrifying nightmares about a man named Charles with glowing red eyes and no face.","annotation":[]},
+				{"picture":"HauntedHouse2","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"3","annotation":[{"marginleft":"700px","margintop":"300px","height":"30px","width":"60px","text":"Indiciu"}]},
+				{"picture":"HauntedHouse3","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"4","annotation":[{"marginleft":"700px","margintop":"300px","height":"35px","width":"60px","text":"Indiciu"}]},
+				{"picture":"HauntedHouse4","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"5","annotation":[]},
+				{"picture":"HauntedHouse5","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"6","annotation":[]},
+				{"picture":"HauntedHouse6","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"7","annotation":[]},
+				{"picture":"finish","annotation":[]}
 			]
 		},
 		{
 			"name":"bau",
 			"scenario":[
-				{"picture":"HountedHouse2","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"1"},
-				{"picture":"HountedHouse2","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse3"},
-				{"picture":"HountedHouse3","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse4"},
-				{"picture":"HountedHouse4","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse5"},
-				{"picture":"HountedHouse5","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse6"},
-				{"picture":"HountedHouse6","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse7"}
+				{"picture":"HauntedHouse2","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"1"},
+				{"picture":"HauntedHouse2","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse3"},
+				{"picture":"HauntedHouse3","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse4"},
+				{"picture":"HauntedHouse4","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse5"},
+				{"picture":"HauntedHouse5","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse6"},
+				{"picture":"HauntedHouse6","marginleft":"500px","margintop":"300px","height":"350px","width":"200px","nextimage":"HountedHouse7"}
 			]
 		}
 	]
