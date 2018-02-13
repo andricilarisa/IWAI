@@ -17,6 +17,10 @@ function point_it(event,nr){
 }
 function add_game(){
 tit=document.getElementById("title").value;
+if(tit==""){
+  alert("Must add a title!")
+}
+else{
 console.log("Titlu: ", tit);
 var elem = document.getElementById('addgame');
     elem.parentNode.removeChild(elem);
@@ -30,6 +34,7 @@ div.innerHTML = `
     </div>
 `;
 document.getElementById('game').appendChild(div);
+}
 }
 function add_image(){
 nr_image=nr_image+1;
@@ -49,7 +54,8 @@ div.innerHTML = `
         <canvas id="${tit}${nr_image}" width="600" height="550"></canvas>
         <canvas id="${tit}draw${nr_image}" width="600" height="550" style="position: absolute; left: 15%" onclick="point_it(event,${nr_image})"></canvas>
         <div id="add_adnotation"></div>
-        <button style="margin: 10px" class="create-game-button" id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
+        <button style="margin: 10px" class="create-game-button" id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add next image</button>
+        <button style="margin: 10px" class="create-game-button" id="buttoncoment${nr_image}" onclick="add_coment(${nr_image})" item-width="50px" item-height="150px">Add coment area</button>
       </div>
       <div id="finalcanvasdiv${nr_image}" style="position:absolute;top:300px;">
         <canvas id="finalcanvas"></canvas>
@@ -68,17 +74,50 @@ reader.addEventListener("load", function () {
        context.drawImage(imageObj, 69,50);
      }
     imageObj.src = reader.result;
+    /* var request = new XMLHttpRequest();
+    var URL = "savejson.php?type=img&title="+tit+nr_image+"&data=" +reader.result;
+  console.log(URL);
+    request.open("GET", URL);
+    request.setRequestHeader("Content-Type",
+                             "text/plain;charset=UTF-8");
+    request.send();*/
     canvas.style.bac
   }, false);
   if (file) {
     reader.readAsDataURL(file);
-  } 
+  }
 }
 function add_adnotation(nr){
   adnotation[nr][0]=adnotation[nr][0]+1;
   adnotation[nr][adnotation[nr][0]]=[];
-  adnotation[nr][adnotation[nr][0]][0]=0;
+  adnotation[nr][adnotation[nr][0]][0]=1;
+  adnotation[nr][adnotation[nr][0]][1]="next";
   var elem = document.getElementById('button'+nr);
+    elem.parentNode.removeChild(elem);
+    elem = document.getElementById('buttoncoment'+nr);
+    elem.parentNode.removeChild(elem);
+  
+  var div = document.createElement('div');
+div.innerHTML = `
+    <div style="margin-bottom: 10px" id="butons${nr}">
+      <div>
+      <input style="margin: 10px; border-radius: 5px; border: none; padding: 10px" type="text" id="text${nr}"/><br>
+      </div>
+      <button class="create-game-button" style="cursor: pointer" id="stop${nr}" onclick="stop_adnotation(${nr})" item-width="50px" item-height="150px">Stop adnotation</button>
+      <button class="create-game-button" id="Delete${nr}" onclick="delete_adnotation(${nr})" item-width="50px" item-height="150px">Delete adnotation</button>
+    </div>
+`;
+document.getElementById('add_image_div').appendChild(div);
+  
+}
+function add_coment(nr){
+  adnotation[nr][0]=adnotation[nr][0]+1;
+  adnotation[nr][adnotation[nr][0]]=[];
+  adnotation[nr][adnotation[nr][0]][0]=1;
+  adnotation[nr][adnotation[nr][0]][1]="coment";
+  var elem = document.getElementById('button'+nr);
+    elem.parentNode.removeChild(elem);
+    elem = document.getElementById('buttoncoment'+nr);
     elem.parentNode.removeChild(elem);
   
   var div = document.createElement('div');
@@ -110,6 +149,7 @@ var elem = document.getElementById('finalcanvasdiv'+nr);
 div.innerHTML = `
     <div id="add_adnotation"></div>
       <button style="margin: 10px" class="create-game-button" id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
+      <button style="margin: 10px" class="create-game-button" id="buttoncoment${nr_image}" onclick="add_coment(${nr_image})" item-width="50px" item-height="150px">Add coment area</button>
     </div>
     <div id="finalcanvasdiv${nr}" style="position:absolute;top:300px;">
      <canvas id="finalcanvas"></canvas>
@@ -126,8 +166,12 @@ function drawCoordinates(x,y,image){
     ctx.fill();
 }
 function stop_adnotation(nr){
-  adnotation[nr][adnotation[nr][0]][0]=adnotation[nr][adnotation[nr][0]][0]+1;
   var next=document.getElementById("text"+nr).value;
+  if(next==""){
+    alert("Must add next image");
+  }
+  else{
+  adnotation[nr][adnotation[nr][0]][0]=adnotation[nr][adnotation[nr][0]][0]+1;
   adnotation[nr][adnotation[nr][0]][adnotation[nr][adnotation[nr][0]][0]]=next;
    var elem = document.getElementById('butons'+nr);
     elem.parentNode.removeChild(elem);
@@ -137,22 +181,23 @@ function stop_adnotation(nr){
 div.innerHTML = `
     <div id="add_adnotation"></div>
       <button style="margin: 10px" class="create-game-button" id="button${nr_image}" onclick="add_adnotation(${nr_image})" item-width="50px" item-height="150px">Add adnotation</button>
-    </div>
+      <button style="margin: 10px" class="create-game-button" id="buttoncoment${nr_image}" onclick="add_coment(${nr_image})" item-width="50px" item-height="150px">Add coment area</button>
+   </div>
     <div id="finalcanvasdiv${nr}" style="position:absolute;top:300px;">
      <canvas id="finalcanvas"></canvas>
     </div>
 `;
 document.getElementById('page'+nr).appendChild(div);
-}
+}}
 /*function save_game(){
-  var text='{"game":[{"name": "'+tit+'","scenario"{"first":"'+tit+'1",';
+  var text='{"game":[{"name": "'+tit+'","scenario":{"first":"'+tit+'1",';
   var i=0,j=0,k=0;
   for(i=1;i<adnotation[1][0];i++){
     text=text+'"adnotare'+i+'":[';
     for(j=1;j<=adnotation[1][i][0]-1;j++){
         text=text+'{"x":"'+adnotation[1][i][j].x+'","y":"'+adnotation[1][i][j].y+'"},';
     }
-  text=text+'"nextimage":'
+  text=text+'"nextimage":'+adnotation[1][i][adnotation[1][i][0]];
   }
   for(k=2;k<adnotation[0];k++){
     for(i=1;i<adnotation[k][0];i++){
@@ -160,9 +205,18 @@ document.getElementById('page'+nr).appendChild(div);
     for(j=1;j<=adnotation[k][i][0]-1;j++){
         text=text+'{"x":"'+adnotation[k][i][j].x+'","y":"'+adnotation[k][i][j].y+'"},';
     }
+    text=text+'"nextimage":'+adnotation[k][i][adnotation[k][i][0]];
   }
   }
+text+']}}]}'
+console.log(text[35]);
 var docjson= JSON.parse(text);
+var request = new XMLHttpRequest();
+    var URL = "savejson.php?type=json&data=" + encodeURI(docjson);
+    request.open("GET", URL);
+    request.setRequestHeader("Content-Type",
+                             "text/plain;charset=UTF-8");
+    request.send();
 }*/
   </script>
 </head>
